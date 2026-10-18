@@ -2,29 +2,29 @@ from math import sqrt, acos, degrees, radians, cos, sin
 
 
 class Vector:
-    def __init__(self, x, y) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: float, y_coordinate: float) -> None:
+        self.x_coordinate = round(x_coordinate, 2)
+        self.y_coordinate = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x + other.x,
-            self.y + other.y
+            self.x_coordinate + other.x_coordinate,
+            self.y_coordinate + other.y_coordinate
         )
 
     def __sub__(self, other: "Vector") -> "Vector":
         return Vector(
-            self.x - other.x,
-            self.y - other.y
+            self.x_coordinate - other.x_coordinate,
+            self.y_coordinate - other.y_coordinate
         )
 
     def __mul__(self, other: float | "Vector") -> float | "Vector":
         if isinstance(other, Vector):
-            return self.x * other.x + self.y * other.y
+            return self.x_coordinate * other.x_coordinate + self.y_coordinate * other.y_coordinate
 
         return Vector(
-            self.x * other,
-            self.y * other
+            self.x_coordinate * other,
+            self.y_coordinate * other
         )
 
     @classmethod
@@ -39,14 +39,14 @@ class Vector:
         )
 
     def get_length(self) -> float:
-        return sqrt(self.x ** 2 + self.y ** 2)
+        return sqrt(self.x_coordinate ** 2 + self.y_coordinate ** 2)
 
     def get_normalized(self) -> "Vector":
         length = self.get_length()
 
         return Vector(
-            self.x / length,
-            self.y / length
+            self.x_coordinate / length,
+            self.y_coordinate / length
         )
 
     def angle_between(self, vector: "Vector") -> int:
@@ -66,7 +66,7 @@ class Vector:
     def rotate(self, degree: int) -> "Vector":
         rad = radians(degree)
 
-        new_x = self.x * cos(rad) - self.y * sin(rad)
-        new_y = self.x * sin(rad) + self.y * cos(rad)
+        new_x = self.x_coordinate * cos(rad) - self.y_coordinate * sin(rad)
+        new_y = self.x_coordinate * sin(rad) + self.y_coordinate * cos(rad)
 
         return Vector(new_x, new_y)
