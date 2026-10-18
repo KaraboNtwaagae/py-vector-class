@@ -2,7 +2,7 @@ from math import sqrt, acos, degrees, radians, cos, sin
 
 
 class Vector:
-    def __init__(self, x: float, y: float) -> None:
+    def __init__(self, x, y) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
