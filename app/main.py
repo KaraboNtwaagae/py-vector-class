@@ -20,7 +20,10 @@ class Vector:
 
     def __mul__(self, other: float | "Vector") -> float | "Vector":
         if isinstance(other, Vector):
-            return self.x_coordinate * other.x_coordinate + self.y_coordinate * other.y_coordinate
+            return (self.x_coordinate
+                    * other.x_coordinate
+                    + self.y_coordinate
+                    * other.y_coordinate)
 
         return Vector(
             self.x_coordinate * other,
@@ -53,8 +56,8 @@ class Vector:
         dot_product = self * vector
 
         cos_a = (
-            dot_product /
-            (self.get_length() * vector.get_length())
+            dot_product
+            / (self.get_length() * vector.get_length())
         )
 
         return round(degrees(acos(cos_a)))
